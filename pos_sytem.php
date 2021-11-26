@@ -198,6 +198,11 @@ function order()
             $c32 = $c3 + $c31 - $dis13;
             $c42 = $c4 + $c41 - $dis14;
 
+            $c121 = $c1 + $c11;
+            $c221 = $c2 + $c21;
+            $c321 = $c3 + $c31;
+            $c421 = $c4 + $c41;
+
             switch ($c)
             {
 
@@ -210,26 +215,39 @@ function order()
                     if ($h >= 5)
                     {
                         echo "Total discount is (10%) : RM" . $dis11 . "\n";
+                        echo "Total amount customer have to pay including GST and discount: RM" . $c12 . "\n\n";
+                        $pay = readline('How much customer pay: RM');
+                        echo " \n";
+                        $bal1 = $pay - $c12;
+                        if ($c12 > $pay)
+                        {
+                            echo "INVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\n\n";
+                            break;
+                        }
+                        else
+                        {
+                            # code...
+                            
+                        }
                     }
 
                     else
                     {
                         echo "NOT APPLICABLE FOR ANY discount \n";
-                    }
-                    echo "Total amount customer have to pay including GST and discount: RM" . $c12 . "\n\n";
-
-                    $pay = readline('How much customer pay: RM');
-                    echo " \n";
-                    $bal1 = $pay - $c12;
-                    if ($c12 > $pay)
-                    {
-                        echo "INVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\n\n";
-                        break;
-                    }
-                    else
-                    {
-                        # code...
-                        
+                        echo "Total amount customer have to pay including GST : RM" . $c121 . "\n\n";
+                        $pay = readline('How much customer pay: RM');
+                        echo " \n";
+                        $bal1 = $pay - $c121;
+                        if ($c121 > $pay)
+                        {
+                            echo "INVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\n\n";
+                            break;
+                        }
+                        else
+                        {
+                            # code...
+                            
+                        }
                     }
 
                     echo "\n";
@@ -270,20 +288,23 @@ function order()
                     echo "\n";
                     echo "GST 6% (RM) :" . $c11;
                     echo "\n";
+
+                    echo "Total (RM) : " . $c1;
+                    echo "\n";
+
                     if ($h >= 5)
                     {
                         echo "Total discount is (10%) : RM" . $dis11 . "\n";
+                        echo "Total amount including GST 6% (RM) and discount : " . $c12;
+                        echo "\n";
                     }
 
                     else
                     {
                         echo "NOT APPLICABLE FOR ANY discount \n";
+                        echo "Total amount including GST 6% (RM)  : " . $c121;
+                        echo "\n";
                     }
-                    echo "Total (RM) : " . $c1;
-                    echo "\n";
-
-                    echo "Total amount including GST 6% (RM) and discount : " . $c12;
-                    echo "\n";
 
                     echo "Cash Tender (RM) :" . $pay;
 
@@ -302,24 +323,37 @@ function order()
                     if ($h >= 5)
                     {
                         echo "Total discount is (10%) : RM" . $dis12 . "\n";
+                        echo "Total amount customer have to pay including GST and discount: RM" . $c22 . "\n\n";
+                        $pay = readline('How much customer pay: RM');
+                        $bal2 = $pay - $c22;
+                        if ($c22 > $pay)
+                        {
+                            echo "INVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\n\n";
+                            break;
+                        }
+                        else
+                        {
+                            # code...
+                            
+                        }
                     }
 
                     else
                     {
                         echo "NOT APPLICABLE FOR ANY discount \n";
-                    }
-                    echo "Total amount customer have to pay including GST and discount: RM" . $c22 . "\n\n";
-                    $pay = readline('How much customer pay: RM');
-                    $bal2 = $pay - $c22;
-                    if ($c22 > $pay)
-                    {
-                        echo "INVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\n\n";
-                        break;
-                    }
-                    else
-                    {
-                        # code...
-                        
+                        echo "Total amount customer have to pay including GST : RM" . $c221 . "\n\n";
+                        $pay = readline('How much customer pay: RM');
+                        $bal2 = $pay - $c221;
+                        if ($c221 > $pay)
+                        {
+                            echo "INVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\n\n";
+                            break;
+                        }
+                        else
+                        {
+                            # code...
+                            
+                        }
                     }
 
                     echo "customer balance = RM" . $bal2 . "\n\n";
@@ -359,19 +393,23 @@ function order()
                     echo "\n";
                     echo "GST 6% (RM) :" . $c21;
                     echo "\n";
+
+                    echo "Total (RM) : " . $c2;
+                    echo "\n";
                     if ($h >= 5)
                     {
                         echo "Total discount is (10%) : RM" . $dis12 . "\n";
+                        echo "Total amount including GST 6% (RM) and discount: " . $c22;
+                        echo "\n";
                     }
 
                     else
                     {
                         echo "NOT APPLICABLE FOR ANY discount \n";
+                        echo "Total amount including GST 6% (RM)  " . $c221;
+                        echo "\n";
                     }
-                    echo "Total (RM) : " . $c2;
-                    echo "\n";
-                    echo "Total amount including GST 6% (RM) and discount: " . $c22;
-                    echo "\n";
+
                     echo "Cash Tender (RM) :" . $pay;
                     echo "\n";
                     echo "Change Due (RM) : " . $bal2;
@@ -388,24 +426,37 @@ function order()
                     if ($h >= 5)
                     {
                         echo "Total discount is (10%) : RM" . $dis13 . "\n";
+                        echo "Total amount customer have to pay including GST and discount: RM" . $c32 . "\n\n";
+                        $pay = readline('How much customer pay: RM');
+                        $bal3 = $pay - $c32;
+                        if ($c32 > $pay)
+                        {
+                            echo "INVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\n\n";
+                            break;
+                        }
+                        else
+                        {
+                            # code...
+                            
+                        }
                     }
 
                     else
                     {
                         echo "NOT APPLICABLE FOR ANY discount \n";
-                    }
-                    echo "Total amount customer have to pay including GST and discount: RM" . $c32 . "\n\n";
-                    $pay = readline('How much customer pay: RM');
-                    $bal3 = $pay - $c32;
-                    if ($c32 > $pay)
-                    {
-                        echo "INVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\n\n";
-                        break;
-                    }
-                    else
-                    {
-                        # code...
-                        
+                        echo "Total amount customer have to pay including GST : RM" . $c321 . "\n\n";
+                        $pay = readline('How much customer pay: RM');
+                        $bal3 = $pay - $c321;
+                        if ($c321 > $pay)
+                        {
+                            echo "INVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\n\n";
+                            break;
+                        }
+                        else
+                        {
+                            # code...
+                            
+                        }
                     }
 
                     echo "customer balance = RM" . $bal3 . "\n\n";
@@ -445,19 +496,23 @@ function order()
                     echo "\n";
                     echo "GST 6% (RM) :" . $c31;
                     echo "\n";
+
+                    echo "Total (RM) : " . $c3;
+                    echo "\n";
                     if ($h >= 5)
                     {
                         echo "Total discount is (10%) : RM" . $dis13 . "\n";
+                        echo "Total amount including GST 6% (RM) and discount : " . $c32;
+                        echo "\n";
                     }
 
                     else
                     {
                         echo "NOT APPLICABLE FOR ANY discount \n";
+                        echo "Total amount including GST 6% (RM) : " . $c321;
+                        echo "\n";
                     }
-                    echo "Total (RM) : " . $c3;
-                    echo "\n";
-                    echo "Total amount including GST 6% (RM) and discount : " . $c32;
-                    echo "\n";
+
                     echo "Cash Tender (RM) :" . $pay;
                     echo "\n";
                     echo "Change Due (RM) : " . $bal3;
@@ -474,25 +529,39 @@ function order()
                     if ($h >= 5)
                     {
                         echo "Total discount is (10%) : RM" . $dis14 . "\n";
+                        echo "Total amount customer have to pay including GST and discount: RM" . $c42 . "\n\n";
+                        $pay = readline('How much customer pay: RM');
+                        $bal4 = $pay - $c42;
+                        if ($c42 > $pay)
+                        {
+                            echo "INVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\n\n";
+                            break;
+                        }
+                        else
+                        {
+                            # code...
+                            
+                        }
                     }
 
                     else
                     {
                         echo "NOT APPLICABLE FOR ANY discount \n";
+                        echo "Total amount customer have to pay including GST : RM" . $c421 . "\n\n";
+                        $pay = readline('How much customer pay: RM');
+                        $bal4 = $pay - $c421;
+                        if ($c421 > $pay)
+                        {
+                            echo "INVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\n\n";
+                            break;
+                        }
+                        else
+                        {
+                            # code...
+                            
+                        }
                     }
-                    echo "Total amount customer have to pay including GST and discount: RM" . $c42 . "\n\n";
-                    $pay = readline('How much customer pay: RM');
-                    $bal4 = $pay - $c42;
-                    if ($c42 > $pay)
-                    {
-                        echo "INVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\n\n";
-                        break;
-                    }
-                    else
-                    {
-                        # code...
-                        
-                    }
+
                     echo "customer balance = RM" . $bal4 . "\n\n";
 
                     echo "GENERATING CUSTOMER RECEIPT.....\n";
@@ -530,19 +599,22 @@ function order()
                     echo "\n";
                     echo "GST 6% (RM) :" . $c41;
                     echo "\n";
+
+                    echo "Total (RM) : " . $c4;
+                    echo "\n";
                     if ($h >= 5)
                     {
                         echo "Total discount is (10%) : RM" . $dis14 . "\n";
+                        echo "Total amount including GST 6% (RM) and discount : " . $c42;
+                        echo "\n";
                     }
 
                     else
                     {
                         echo "NOT APPLICABLE FOR ANY discount \n";
+                        echo "Total amount including GST 6% (RM): " . $c421;
+                        echo "\n";
                     }
-                    echo "Total (RM) : " . $c4;
-                    echo "\n";
-                    echo "Total amount including GST 6% (RM) and discount : " . $c42;
-                    echo "\n";
 
                     echo "Cash Tender (RM) :" . $pay;
                     echo "\n";
