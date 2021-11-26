@@ -221,7 +221,7 @@ function order()
                         $bal1 = $pay - $c12;
                         if ($c12 > $pay)
                         {
-                            echo "INVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\n\n";
+                            echo "\e[1;32;40mINVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\e[0m\n\n";
                             break;
                         }
                         else
@@ -240,7 +240,7 @@ function order()
                         $bal1 = $pay - $c121;
                         if ($c121 > $pay)
                         {
-                            echo "INVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\n\n";
+                            echo "\e[1;32;40mINVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\e[0m\n\n";
                             break;
                         }
                         else
@@ -328,7 +328,7 @@ function order()
                         $bal2 = $pay - $c22;
                         if ($c22 > $pay)
                         {
-                            echo "INVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\n\n";
+                            echo "\e[1;32;40mINVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\e[0m\n\n";
                             break;
                         }
                         else
@@ -346,7 +346,7 @@ function order()
                         $bal2 = $pay - $c221;
                         if ($c221 > $pay)
                         {
-                            echo "INVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\n\n";
+                            echo "\e[1;32;40mINVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\e[0m\n\n";;
                             break;
                         }
                         else
@@ -431,7 +431,7 @@ function order()
                         $bal3 = $pay - $c32;
                         if ($c32 > $pay)
                         {
-                            echo "INVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\n\n";
+                            echo "\e[1;32;40mINVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\e[0m\n\n";
                             break;
                         }
                         else
@@ -449,7 +449,7 @@ function order()
                         $bal3 = $pay - $c321;
                         if ($c321 > $pay)
                         {
-                            echo "INVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\n\n";
+                            echo "\e[1;32;40mINVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\e[0m\n\n";
                             break;
                         }
                         else
@@ -534,7 +534,7 @@ function order()
                         $bal4 = $pay - $c42;
                         if ($c42 > $pay)
                         {
-                            echo "INVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\n\n";
+                            echo "\e[1;32;40mINVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\e[0m\n\n";
                             break;
                         }
                         else
@@ -552,7 +552,7 @@ function order()
                         $bal4 = $pay - $c421;
                         if ($c421 > $pay)
                         {
-                            echo "INVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\n\n";
+                            echo "\e[1;32;40mINVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\e[0m\n\n";
                             break;
                         }
                         else
