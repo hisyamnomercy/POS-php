@@ -28,6 +28,7 @@ $menu = array(
 echo "\e[1;32;40m--------------------------------------------------------------------------------------  \n";
 echo "------------------------------WELCOME TO BILAL POS SYSTEM----------------------------\n";
 echo "--------------------------------------------------------------------------------------\e[0m  \n";
+echo "\e[1;37;42mDISCOUNT: CUSTOMER ORDER MORE OR EQUAL TO 5 WILL BE APPLICABLE TO GET 10% DISCOUNT\e[0m\n";
 
 //readline
 
@@ -49,12 +50,18 @@ echo "Verifying your credential...............\n\n";
 sleep(2);
 echo "Please wait a while.....................\n\n";
 sleep(3);
-if ($a == 1822907 & $b == 123)
+if ($a == 'admin' & $b == 123)
 {
-    echo "\e[1;32;40mHappy working HISYAM, keep up the good work :)\n";
+    echo "\e[1;32;40mWELCOME BOSS, keep up the good work :)\n";
     echo "\n";
     echo "CHECK IN DATE AND TIME :" . $currDate->format('Y/m/j H:i:s' . "\n\n");
 
+}
+elseif ($a == 1822907 & $b == 123)
+{
+    echo "Happy working HISYAM, keep up the good work :)\n";
+    echo "\n";
+    echo "CHECK IN DATE AND TIME :" . $currDate->format('Y/m/j H:i:s' . "\n\n");
 }
 elseif ($a == 1910331 & $b == 123)
 {
@@ -105,6 +112,7 @@ echo "|   4      " . $menu[3][0] . "             " . $menu[3][1] . "            
 
 echo "-------------------------------MENU FOR TODAY----------------------------------------------------\e[0m\n";
 echo "\n\n";
+echo "\e[1;37;42mDISCOUNT: CUSTOMER ORDER MORE OR EQUAL TO 5 WILL BE APPLICABLE TO GET 10% DISCOUNT\e[0m\n";
 order();
 
 function order()
@@ -114,6 +122,8 @@ function order()
     $p3 = 8;
     $p4 = 13;
     $tax = 0.06;
+    $dis1 = 0.05;
+    $dis2 = 0.10;
 
     $menu = array(
         array(
@@ -143,7 +153,7 @@ function order()
     );
 
     $c = readline('Please enter the customer order no:');
-    if ($c > 4)
+    if ($c > 4 or $c < 1)
     {
         echo "YOU MADE AN ERROR \n\n";
         echo "DEDUCTING YOU SALARY........................... \n\n";
@@ -178,10 +188,15 @@ function order()
             $c31 = $h * $p3 * $tax;
             $c41 = $h * $p4 * $tax;
 
-            $c12 = $c1 + $c11;
-            $c22 = $c2 + $c21;
-            $c32 = $c3 + $c31;
-            $c42 = $c4 + $c41;
+            $dis11 = $c1 * $dis2;
+            $dis12 = $c2 * $dis2;
+            $dis13 = $c2 * $dis2;
+            $dis14 = $c4 * $dis2;
+
+            $c12 = $c1 + $c11 - $dis11;
+            $c22 = $c2 + $c21 - $dis12;
+            $c32 = $c3 + $c31 - $dis13;
+            $c42 = $c4 + $c41 - $dis14;
 
             switch ($c)
             {
@@ -192,7 +207,17 @@ function order()
                     echo "Price per set =  RM" . $menu[0][2] . "\n\n";
                     echo "Total amount customer have to pay without GST: RM" . $c1 . "\n\n";
                     echo "GST 6% : RM" . $c11 . "\n";
-                    echo "Total amount customer have to pay including GST: RM" . $c12 . "\n\n";
+                    if ($h >= 5)
+                    {
+                        echo "Total discount is (10%) : RM" . $dis11 . "\n";
+                    }
+
+                    else
+                    {
+                        echo "NOT APPLICABLE FOR ANY discount \n";
+                    }
+                    echo "Total amount customer have to pay including GST and discount: RM" . $c12 . "\n\n";
+
                     $pay = readline('How much customer pay: RM');
                     echo " \n";
                     $bal1 = $pay - $c12;
@@ -245,10 +270,21 @@ function order()
                     echo "\n";
                     echo "GST 6% (RM) :" . $c11;
                     echo "\n";
+                    if ($h >= 5)
+                    {
+                        echo "Total discount is (10%) : RM" . $dis11 . "\n";
+                    }
+
+                    else
+                    {
+                        echo "NOT APPLICABLE FOR ANY discount \n";
+                    }
                     echo "Total (RM) : " . $c1;
                     echo "\n";
-                    echo "Total amount including GST 6% (RM) : " . $c12;
+
+                    echo "Total amount including GST 6% (RM) and discount : " . $c12;
                     echo "\n";
+
                     echo "Cash Tender (RM) :" . $pay;
 
                     echo "\n";
@@ -263,7 +299,16 @@ function order()
                     echo "Price per set =  RM" . $menu[1][2] . "\n\n";
                     echo "Total amount customer have to pay without GST: RM" . $c2 . "\n\n";
                     echo "GST 6% : RM" . $c21 . "\n";
-                    echo "Total amount customer have to pay including GST: RM" . $c22 . "\n\n";
+                    if ($h >= 5)
+                    {
+                        echo "Total discount is (10%) : RM" . $dis12 . "\n";
+                    }
+
+                    else
+                    {
+                        echo "NOT APPLICABLE FOR ANY discount \n";
+                    }
+                    echo "Total amount customer have to pay including GST and discount: RM" . $c22 . "\n\n";
                     $pay = readline('How much customer pay: RM');
                     $bal2 = $pay - $c22;
                     if ($c22 > $pay)
@@ -314,9 +359,18 @@ function order()
                     echo "\n";
                     echo "GST 6% (RM) :" . $c21;
                     echo "\n";
+                    if ($h >= 5)
+                    {
+                        echo "Total discount is (10%) : RM" . $dis12 . "\n";
+                    }
+
+                    else
+                    {
+                        echo "NOT APPLICABLE FOR ANY discount \n";
+                    }
                     echo "Total (RM) : " . $c2;
                     echo "\n";
-                    echo "Total amount including GST 6% (RM) : " . $c22;
+                    echo "Total amount including GST 6% (RM) and discount: " . $c22;
                     echo "\n";
                     echo "Cash Tender (RM) :" . $pay;
                     echo "\n";
@@ -331,7 +385,16 @@ function order()
                     echo "Price per set=  RM" . $menu[2][2] . "\n\n";
                     echo "Total amount customer have to pay without GST: RM" . $c3 . "\n\n";
                     echo "GST 6% : RM" . $c31 . "\n";
-                    echo "Total amount customer have to pay including GST: RM" . $c32 . "\n\n";
+                    if ($h >= 5)
+                    {
+                        echo "Total discount is (10%) : RM" . $dis13 . "\n";
+                    }
+
+                    else
+                    {
+                        echo "NOT APPLICABLE FOR ANY discount \n";
+                    }
+                    echo "Total amount customer have to pay including GST and discount: RM" . $c32 . "\n\n";
                     $pay = readline('How much customer pay: RM');
                     $bal3 = $pay - $c32;
                     if ($c32 > $pay)
@@ -382,9 +445,18 @@ function order()
                     echo "\n";
                     echo "GST 6% (RM) :" . $c31;
                     echo "\n";
+                    if ($h >= 5)
+                    {
+                        echo "Total discount is (10%) : RM" . $dis13 . "\n";
+                    }
+
+                    else
+                    {
+                        echo "NOT APPLICABLE FOR ANY discount \n";
+                    }
                     echo "Total (RM) : " . $c3;
                     echo "\n";
-                    echo "Total amount including GST 6% (RM) : " . $c32;
+                    echo "Total amount including GST 6% (RM) and discount : " . $c32;
                     echo "\n";
                     echo "Cash Tender (RM) :" . $pay;
                     echo "\n";
@@ -399,7 +471,16 @@ function order()
                     echo "Price per set=  RM" . $menu[3][2] . "\n\n";
                     echo "Total amount customer have to pay without GST: RM" . $c4 . "\n\n";
                     echo "GST 6% : RM" . $c41 . "\n";
-                    echo "Total amount customer have to pay including GST: RM" . $c42 . "\n\n";
+                    if ($h >= 5)
+                    {
+                        echo "Total discount is (10%) : RM" . $dis14 . "\n";
+                    }
+
+                    else
+                    {
+                        echo "NOT APPLICABLE FOR ANY discount \n";
+                    }
+                    echo "Total amount customer have to pay including GST and discount: RM" . $c42 . "\n\n";
                     $pay = readline('How much customer pay: RM');
                     $bal4 = $pay - $c42;
                     if ($c42 > $pay)
@@ -449,10 +530,20 @@ function order()
                     echo "\n";
                     echo "GST 6% (RM) :" . $c41;
                     echo "\n";
+                    if ($h >= 5)
+                    {
+                        echo "Total discount is (10%) : RM" . $dis14 . "\n";
+                    }
+
+                    else
+                    {
+                        echo "NOT APPLICABLE FOR ANY discount \n";
+                    }
                     echo "Total (RM) : " . $c4;
                     echo "\n";
-                    echo "Total amount including GST 6% (RM) : " . $c42;
+                    echo "Total amount including GST 6% (RM) and discount : " . $c42;
                     echo "\n";
+
                     echo "Cash Tender (RM) :" . $pay;
                     echo "\n";
                     echo "Change Due (RM) : " . $bal4;
@@ -484,6 +575,7 @@ function order()
 
         echo "-------------------------------MENU FOR TODAY----------------------------------------------------\n";
         echo "\n\n";
+        echo "\e[1;37;42mDISCOUNT: CUSTOMER ORDER MORE OR EQUAL TO 5 WILL BE APPLICABLE TO GET 10% DISCOUNT\e[0m\n";
         return order();
 
     }
@@ -493,7 +585,6 @@ function order()
         sleep(1);
         exit();
     }
-
 
 }
 
