@@ -35,14 +35,14 @@ echo "\e[1;37;42mDISCOUNT: CUSTOMER ORDER MORE OR EQUAL TO 5 WILL BE APPLICABLE 
 
 $from = new DateTimeZone('GMT');
 $to = new DateTimeZone('Asia/Singapore');
-$currDate = new DateTime('now', $from);
-$currDate->setTimezone($to);
-echo "\e[0;36;40mDATE AND TIME :" . $currDate->format('Y/m/j H:i:s' . "\n\n");
-$a = readline('enter your staff ID:');
+$ordernourrDate = new DateTime('now', $from);
+$ordernourrDate->setTimezone($to);
+echo "\e[0;36;40mDATE AND TIME :" . $ordernourrDate->format('Y/m/j H:i:s' . "\n\n");
+$staffid = readline('enter your staff ID:');
 echo "\n";
 echo "enter your password:";
 echo "\033[30;40m";
-$b = readline('');
+$password = readline('');
 echo "\033[30;40m";
 echo "\033[0m";
 echo "\n";
@@ -50,39 +50,18 @@ echo "Verifying your credential...............\n\n";
 sleep(2);
 echo "Please wait a while.....................\n\n";
 sleep(3);
-if ($a == 'admin' & $b == 123)
+if ($staffid == 'admin' & $password == 123)
 {
     echo "\e[1;32;40mWELCOME BOSS, keep up the good work :)\n";
     echo "\n";
-    echo "CHECK IN DATE AND TIME :" . $currDate->format('Y/m/j H:i:s' . "\n\n");
+    echo "CHECK IN DATE AND TIME :" . $ordernourrDate->format('Y/m/j H:i:s' . "\n\n");
 
 }
-elseif ($a == 1822907 & $b == 123)
+elseif ($staffid == 1822907 & $password == 123)
 {
     echo "Happy working HISYAM, keep up the good work :)\n";
     echo "\n";
-    echo "CHECK IN DATE AND TIME :" . $currDate->format('Y/m/j H:i:s' . "\n\n");
-}
-elseif ($a == 1910331 & $b == 123)
-{
-    echo "Happy working NAUFAL, keep up the good work :)\n";
-    echo "\n";
-    echo "CHECK IN DATE AND TIME :" . $currDate->format('Y/m/j H:i:s' . "\n\n");
-}
-elseif ($a == 1912682 & $b == 123)
-{
-    echo "Happy working ALIA HUSNA, keep up the good work :)\n";
-    echo "CHECK IN DATE AND TIME :" . $currDate->format('Y/m/j H:i:s' . "\n\n");
-}
-elseif ($a == 1914782 & $b == 123)
-{
-    echo "Happy working ASILA, keep up the good work :)\n";
-    echo "CHECK IN DATE AND TIME :" . $currDate->format('Y/m/j H:i:s' . "\n\n");
-}
-elseif ($a == 1912092 & $b == 123)
-{
-    echo "Happy working AYUNI, keep up the good work :!\e[0m)\n";
-    echo "CHECK IN DATE AND TIME :" . $currDate->format('Y/m/j H:i:s' . "\e[0m\n\n");
+    echo "CHECK IN DATE AND TIME :" . $ordernourrDate->format('Y/m/j H:i:s' . "\n\n");
 }
 else
 {
@@ -90,9 +69,9 @@ else
     exit();
 }
 
-$e = readline('Are you happy today :) Y or n:' . "\n");
+$happy = readline('Are you happy today :) Y or n:' . "\n");
 echo "\n";
-if ($e == 'Y' or $e == 'y')
+if ($happy == 'Y' or $happy == 'y')
 {
     echo "\nNICE!\n\n";
 }
@@ -117,10 +96,7 @@ order();
 
 function order()
 {
-    $p1 = 18;
-    $p2 = 12;
-    $p3 = 8;
-    $p4 = 13;
+
     $tax = 0.06;
     $dis1 = 0.05;
     $dis2 = 0.10;
@@ -152,8 +128,8 @@ function order()
         )
     );
 
-    $c = readline('Please enter the customer order no:');
-    if ($c > 4 or $c < 1)
+    $orderno = readline('Please enter the customer order no:');
+    if ($orderno > 4 or $orderno < 1)
     {
         echo "YOU MADE AN ERROR \n\n";
         echo "DEDUCTING YOU SALARY........................... \n\n";
@@ -166,7 +142,7 @@ function order()
     else
     {
 
-        $h = readline('enter the quantity :');
+        $quantity = readline('enter the quantity :');
         $z = readline('dine in ? Y or n ');
         $d = readline('do the customer want more set? Y or n: ');
         echo "\n\n";
@@ -178,48 +154,48 @@ function order()
         }
         else
         {
-            $c1 = $h * $p1;
-            $c2 = $h * $p2;
-            $c3 = $h * $p3;
-            $c4 = $h * $p4;
+            $totalpriceA = $quantity * $menu[0][2];
+            $totalpriceB = $quantity * $menu[1][2];
+            $totalpriceC = $quantity * $menu[2][2];
+            $totalpriceD = $quantity * $menu[3][2];
 
-            $c11 = $h * $p1 * $tax;
-            $c21 = $h * $p2 * $tax;
-            $c31 = $h * $p3 * $tax;
-            $c41 = $h * $p4 * $tax;
+            $totaltaxA = $quantity * $menu[0][2] * $tax;
+            $totaltaxB = $quantity * $menu[1][2] * $tax;
+            $totaltaxC = $quantity * $menu[2][2] * $tax;
+            $totaltaxD = $quantity * $menu[3][2] * $tax;
 
-            $dis11 = $c1 * $dis2;
-            $dis12 = $c2 * $dis2;
-            $dis13 = $c2 * $dis2;
-            $dis14 = $c4 * $dis2;
+            $discountA = $totalpriceA * $dis2;
+            $discountB = $totalpriceB * $dis2;
+            $discountC = $totalpriceB * $dis2;
+            $discountD = $totalpriceD * $dis2;
 
-            $c12 = $c1 + $c11 - $dis11;
-            $c22 = $c2 + $c21 - $dis12;
-            $c32 = $c3 + $c31 - $dis13;
-            $c42 = $c4 + $c41 - $dis14;
+            $finalpriceAwithDisc = $totalpriceA + $totaltaxA - $discountA;
+            $finalpriceBwithDisc = $totalpriceB + $totaltaxB - $discountB;
+            $finalpriceCwithDisc = $totalpriceC + $totaltaxC - $discountC;
+            $finalpriceDwithDisc = $totalpriceD + $totaltaxD - $discountD;
 
-            $c121 = $c1 + $c11;
-            $c221 = $c2 + $c21;
-            $c321 = $c3 + $c31;
-            $c421 = $c4 + $c41;
+            $finalpriceA = $totalpriceA + $totaltaxA;
+            $finalpriceB = $totalpriceB + $totaltaxB;
+            $finalpriceC = $totalpriceC + $totaltaxC;
+            $finalpriceD = $totalpriceD + $totaltaxD;
 
-            switch ($c)
+            switch ($orderno)
             {
 
                 case 1:
-
+                    $menu[0][3] = $menu[0][3] - $quantity;
                     echo "\e[0;31;40mCUSTOMER ORDER DETAILS :\n" . $menu[0][0] . " \n" . $menu[0][1] . " \n";
                     echo "Price per set =  RM" . $menu[0][2] . "\n\n";
-                    echo "Total amount customer have to pay without GST: RM" . $c1 . "\n\n";
-                    echo "GST 6% : RM" . $c11 . "\n";
-                    if ($h >= 5)
+                    echo "Total amount customer have to pay without GST: RM" . $totalpriceA . "\n\n";
+                    echo "GST 6% : RM" . $totaltaxA . "\n";
+                    if ($quantity >= 5)
                     {
-                        echo "Total discount is (10%) : RM" . $dis11 . "\n";
-                        echo "Total amount customer have to pay including GST and discount: RM" . $c12 . "\n\n";
+                        echo "Total discount is (10%) : RM" . $discountA . "\n";
+                        echo "Total amount customer have to pay including GST and discount: RM" . $finalpriceAwithDisc . "\n\n";
                         $pay = readline('How much customer pay: RM');
                         echo " \n";
-                        $bal1 = $pay - $c12;
-                        if ($c12 > $pay)
+                        $passwordalanceA = $pay - $finalpriceAwithDisc;
+                        if ($finalpriceAwithDisc > $pay)
                         {
                             echo "\e[1;32;40mINVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\e[0m\n\n";
                             break;
@@ -234,11 +210,11 @@ function order()
                     else
                     {
                         echo "NOT APPLICABLE FOR ANY discount \n";
-                        echo "Total amount customer have to pay including GST : RM" . $c121 . "\n\n";
+                        echo "Total amount customer have to pay including GST : RM" . $finalpriceA . "\n\n";
                         $pay = readline('How much customer pay: RM');
                         echo " \n";
-                        $bal1 = $pay - $c121;
-                        if ($c121 > $pay)
+                        $passwordalanceA = $pay - $finalpriceA;
+                        if ($finalpriceA > $pay)
                         {
                             echo "\e[1;32;40mINVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\e[0m\n\n";
                             break;
@@ -252,7 +228,7 @@ function order()
 
                     echo "\n";
 
-                    echo "customer balance = RM" . $bal1 . "\n\n";
+                    echo "customer balance = RM" . $passwordalanceA . "\n\n";
 
                     echo "GENERATING CUSTOMER RECEIPT.....\n";
                     sleep(1);
@@ -271,12 +247,12 @@ function order()
                     echo "\e[0;36;40mRECEIPT GENERATED ";
                     $from = new DateTimeZone('GMT');
                     $to = new DateTimeZone('Asia/Singapore');
-                    $currDate = new DateTime('now', $from);
-                    $currDate->setTimezone($to);
-                    echo "DATE AND TIME :" . $currDate->format('Y/m/j H:i:s' . "\n\n");
+                    $ordernourrDate = new DateTime('now', $from);
+                    $ordernourrDate->setTimezone($to);
+                    echo "DATE AND TIME :" . $ordernourrDate->format('Y/m/j H:i:s' . "\n\n");
                     echo "ORDER DETAILS: \n";
                     echo $menu[0][0] . " \n" . $menu[0][1] . " \n";
-                    echo "quantity :" . $h . "\n";
+                    echo "quantity :" . $quantity . "\n";
                     if ($z == 'Y' or $z == 'y')
                     {
                         echo "DINE IN\n";
@@ -286,47 +262,48 @@ function order()
                         echo "TAKE AWAY\n";
                     }
                     echo "\n";
-                    echo "GST 6% (RM) :" . $c11;
+                    echo "GST 6% (RM) :" . $totaltaxA;
                     echo "\n";
 
-                    echo "Total (RM) : " . $c1;
+                    echo "Total (RM) : " . $totalpriceA;
                     echo "\n";
 
-                    if ($h >= 5)
+                    if ($quantity >= 5)
                     {
-                        echo "Total discount is (10%) : RM" . $dis11 . "\n";
-                        echo "Total amount including GST 6% (RM) and discount : " . $c12;
+                        echo "Total discount is (10%) : RM" . $discountA . "\n";
+                        echo "Total amount including GST 6% (RM) and discount : " . $finalpriceAwithDisc;
                         echo "\n";
                     }
 
                     else
                     {
                         echo "NOT APPLICABLE FOR ANY discount \n";
-                        echo "Total amount including GST 6% (RM)  : " . $c121;
+                        echo "Total amount including GST 6% (RM)  : " . $finalpriceA;
                         echo "\n";
                     }
 
                     echo "Cash Tender (RM) :" . $pay;
 
                     echo "\n";
-                    echo "Change Due (RM) : " . $bal1;
+                    echo "Change Due (RM) : " . $passwordalanceA;
                     echo "\n\n";
                     echo " It was a pleasure serving you \n Thank you & please come again\e[0m\n\n";
                     echo "\e[1;37;42m...................BILAL CAFE RECEIPT .......................\e[0m\n";
 
                 break;
                 case 2:
+                    $menu[1][3] = $menu[1][3] - $quantity;
                     echo "CUSTOMER ORDER DETAILS :\n" . $menu[1][0] . " \n" . $menu[1][1] . " \n";
                     echo "Price per set =  RM" . $menu[1][2] . "\n\n";
-                    echo "Total amount customer have to pay without GST: RM" . $c2 . "\n\n";
-                    echo "GST 6% : RM" . $c21 . "\n";
-                    if ($h >= 5)
+                    echo "Total amount customer have to pay without GST: RM" . $totalpriceB . "\n\n";
+                    echo "GST 6% : RM" . $totaltaxB . "\n";
+                    if ($quantity >= 5)
                     {
-                        echo "Total discount is (10%) : RM" . $dis12 . "\n";
-                        echo "Total amount customer have to pay including GST and discount: RM" . $c22 . "\n\n";
+                        echo "Total discount is (10%) : RM" . $discountB . "\n";
+                        echo "Total amount customer have to pay including GST and discount: RM" . $finalpriceBwithDisc . "\n\n";
                         $pay = readline('How much customer pay: RM');
-                        $bal2 = $pay - $c22;
-                        if ($c22 > $pay)
+                        $passwordalanceB = $pay - $finalpriceBwithDisc;
+                        if ($finalpriceBwithDisc > $pay)
                         {
                             echo "\e[1;32;40mINVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\e[0m\n\n";
                             break;
@@ -341,10 +318,10 @@ function order()
                     else
                     {
                         echo "NOT APPLICABLE FOR ANY discount \n";
-                        echo "Total amount customer have to pay including GST : RM" . $c221 . "\n\n";
+                        echo "Total amount customer have to pay including GST : RM" . $finalpriceB . "\n\n";
                         $pay = readline('How much customer pay: RM');
-                        $bal2 = $pay - $c221;
-                        if ($c221 > $pay)
+                        $passwordalanceB = $pay - $finalpriceB;
+                        if ($finalpriceB > $pay)
                         {
                             echo "\e[1;32;40mINVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\e[0m\n\n";;
                             break;
@@ -356,7 +333,7 @@ function order()
                         }
                     }
 
-                    echo "customer balance = RM" . $bal2 . "\n\n";
+                    echo "customer balance = RM" . $passwordalanceB . "\n\n";
 
                     echo "GENERATING CUSTOMER RECEIPT.....\n";
                     sleep(1);
@@ -375,12 +352,12 @@ function order()
                     echo "\e[0;36;40mRECEIPT GENERATED ";
                     $from = new DateTimeZone('GMT');
                     $to = new DateTimeZone('Asia/Singapore');
-                    $currDate = new DateTime('now', $from);
-                    $currDate->setTimezone($to);
-                    echo "DATE AND TIME :" . $currDate->format('Y/m/j H:i:s' . "\n\n");
+                    $ordernourrDate = new DateTime('now', $from);
+                    $ordernourrDate->setTimezone($to);
+                    echo "DATE AND TIME :" . $ordernourrDate->format('Y/m/j H:i:s' . "\n\n");
                     echo "ORDER DETAILS: \n";
                     echo $menu[1][0] . " \n" . $menu[1][1] . " \n";
-                    echo "quantity :" . $h;
+                    echo "quantity :" . $quantity;
                     echo "\n";
                     if ($z == 'Y' or $z == 'y')
                     {
@@ -391,45 +368,46 @@ function order()
                         echo "TAKE AWAY\n";
                     }
                     echo "\n";
-                    echo "GST 6% (RM) :" . $c21;
+                    echo "GST 6% (RM) :" . $totaltaxB;
                     echo "\n";
 
-                    echo "Total (RM) : " . $c2;
+                    echo "Total (RM) : " . $totalpriceB;
                     echo "\n";
-                    if ($h >= 5)
+                    if ($quantity >= 5)
                     {
-                        echo "Total discount is (10%) : RM" . $dis12 . "\n";
-                        echo "Total amount including GST 6% (RM) and discount: " . $c22;
+                        echo "Total discount is (10%) : RM" . $discountB . "\n";
+                        echo "Total amount including GST 6% (RM) and discount: " . $finalpriceBwithDisc;
                         echo "\n";
                     }
 
                     else
                     {
                         echo "NOT APPLICABLE FOR ANY discount \n";
-                        echo "Total amount including GST 6% (RM)  " . $c221;
+                        echo "Total amount including GST 6% (RM)  " . $finalpriceB;
                         echo "\n";
                     }
 
                     echo "Cash Tender (RM) :" . $pay;
                     echo "\n";
-                    echo "Change Due (RM) : " . $bal2;
+                    echo "Change Due (RM) : " . $passwordalanceB;
                     echo "\n\n";
                     echo " It was a pleasure serving you \n Thank you & please come again \e[0m\n\n";
                     echo "\e[1;37;42m...................BILAL CAFE RECEIPT .......................\e[0m\n";
 
                 break;
                 case 3:
+                    $menu[2][3] = $menu[2][3] - $quantity;
                     echo "CUSTOMER ORDER DETAILS :\n" . $menu[2][0] . " \n" . $menu[2][1] . " \n";
                     echo "Price per set=  RM" . $menu[2][2] . "\n\n";
-                    echo "Total amount customer have to pay without GST: RM" . $c3 . "\n\n";
-                    echo "GST 6% : RM" . $c31 . "\n";
-                    if ($h >= 5)
+                    echo "Total amount customer have to pay without GST: RM" . $totalpriceC . "\n\n";
+                    echo "GST 6% : RM" . $totaltaxC . "\n";
+                    if ($quantity >= 5)
                     {
-                        echo "Total discount is (10%) : RM" . $dis13 . "\n";
-                        echo "Total amount customer have to pay including GST and discount: RM" . $c32 . "\n\n";
+                        echo "Total discount is (10%) : RM" . $discountC . "\n";
+                        echo "Total amount customer have to pay including GST and discount: RM" . $finalpriceCwithDisc . "\n\n";
                         $pay = readline('How much customer pay: RM');
-                        $bal3 = $pay - $c32;
-                        if ($c32 > $pay)
+                        $passwordalanceC = $pay - $finalpriceCwithDisc;
+                        if ($finalpriceCwithDisc > $pay)
                         {
                             echo "\e[1;32;40mINVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\e[0m\n\n";
                             break;
@@ -444,10 +422,10 @@ function order()
                     else
                     {
                         echo "NOT APPLICABLE FOR ANY discount \n";
-                        echo "Total amount customer have to pay including GST : RM" . $c321 . "\n\n";
+                        echo "Total amount customer have to pay including GST : RM" . $finalpriceC . "\n\n";
                         $pay = readline('How much customer pay: RM');
-                        $bal3 = $pay - $c321;
-                        if ($c321 > $pay)
+                        $passwordalanceC = $pay - $finalpriceC;
+                        if ($finalpriceC > $pay)
                         {
                             echo "\e[1;32;40mINVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\e[0m\n\n";
                             break;
@@ -459,7 +437,7 @@ function order()
                         }
                     }
 
-                    echo "customer balance = RM" . $bal3 . "\n\n";
+                    echo "customer balance = RM" . $passwordalanceC . "\n\n";
 
                     echo "GENERATING CUSTOMER RECEIPT.....\n";
                     sleep(1);
@@ -478,12 +456,12 @@ function order()
                     echo "\e[0;36;40mRECEIPT GENERATED ";
                     $from = new DateTimeZone('GMT');
                     $to = new DateTimeZone('Asia/Singapore');
-                    $currDate = new DateTime('now', $from);
-                    $currDate->setTimezone($to);
-                    echo "DATE AND TIME :" . $currDate->format('Y/m/j H:i:s' . "\n\n");
+                    $ordernourrDate = new DateTime('now', $from);
+                    $ordernourrDate->setTimezone($to);
+                    echo "DATE AND TIME :" . $ordernourrDate->format('Y/m/j H:i:s' . "\n\n");
                     echo "ORDER DETAILS: \n";
                     echo $menu[2][0] . " \n" . $menu[2][1] . " \n";
-                    echo "quantity :" . $h;
+                    echo "quantity :" . $quantity;
                     echo "\n";
                     if ($z == 'Y' or $z == 'y')
                     {
@@ -494,45 +472,46 @@ function order()
                         echo "TAKE AWAY\n";
                     }
                     echo "\n";
-                    echo "GST 6% (RM) :" . $c31;
+                    echo "GST 6% (RM) :" . $totaltaxC;
                     echo "\n";
 
-                    echo "Total (RM) : " . $c3;
+                    echo "Total (RM) : " . $totalpriceC;
                     echo "\n";
-                    if ($h >= 5)
+                    if ($quantity >= 5)
                     {
-                        echo "Total discount is (10%) : RM" . $dis13 . "\n";
-                        echo "Total amount including GST 6% (RM) and discount : " . $c32;
+                        echo "Total discount is (10%) : RM" . $discountC . "\n";
+                        echo "Total amount including GST 6% (RM) and discount : " . $finalpriceCwithDisc;
                         echo "\n";
                     }
 
                     else
                     {
                         echo "NOT APPLICABLE FOR ANY discount \n";
-                        echo "Total amount including GST 6% (RM) : " . $c321;
+                        echo "Total amount including GST 6% (RM) : " . $finalpriceC;
                         echo "\n";
                     }
 
                     echo "Cash Tender (RM) :" . $pay;
                     echo "\n";
-                    echo "Change Due (RM) : " . $bal3;
+                    echo "Change Due (RM) : " . $passwordalanceC;
                     echo "\n\n";
                     echo " It was a pleasure serving you \n Thank you & please come again \e[0m\n\n";
                     echo "\e[1;37;42m...................BILAL CAFE RECEIPT .......................\e[0m\n";
 
                 break;
                 case 4:
+                    $menu[3][3] = $menu[3][3] - $quantity;
                     echo "CUSTOMER ORDER DETAILS :\n" . $menu[3][0] . " \n" . $menu[3][1] . " \n";
                     echo "Price per set=  RM" . $menu[3][2] . "\n\n";
-                    echo "Total amount customer have to pay without GST: RM" . $c4 . "\n\n";
-                    echo "GST 6% : RM" . $c41 . "\n";
-                    if ($h >= 5)
+                    echo "Total amount customer have to pay without GST: RM" . $totalpriceD . "\n\n";
+                    echo "GST 6% : RM" . $totaltaxD . "\n";
+                    if ($quantity >= 5)
                     {
-                        echo "Total discount is (10%) : RM" . $dis14 . "\n";
-                        echo "Total amount customer have to pay including GST and discount: RM" . $c42 . "\n\n";
+                        echo "Total discount is (10%) : RM" . $discountD . "\n";
+                        echo "Total amount customer have to pay including GST and discount: RM" . $finalpriceDwithDisc . "\n\n";
                         $pay = readline('How much customer pay: RM');
-                        $bal4 = $pay - $c42;
-                        if ($c42 > $pay)
+                        $passwordalanceD = $pay - $finalpriceDwithDisc;
+                        if ($finalpriceDwithDisc > $pay)
                         {
                             echo "\e[1;32;40mINVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\e[0m\n\n";
                             break;
@@ -547,10 +526,10 @@ function order()
                     else
                     {
                         echo "NOT APPLICABLE FOR ANY discount \n";
-                        echo "Total amount customer have to pay including GST : RM" . $c421 . "\n\n";
+                        echo "Total amount customer have to pay including GST : RM" . $$finalpriceDwithDisc . "\n\n";
                         $pay = readline('How much customer pay: RM');
-                        $bal4 = $pay - $c421;
-                        if ($c421 > $pay)
+                        $passwordalanceD = $pay - $$finalpriceDwithDisc;
+                        if ($$finalpriceDwithDisc > $pay)
                         {
                             echo "\e[1;32;40mINVALID TRANSACTION \n\nPLEASE RETAKE THE ORDER AND AVOID ANY ERROR!\e[0m\n\n";
                             break;
@@ -562,7 +541,7 @@ function order()
                         }
                     }
 
-                    echo "customer balance = RM" . $bal4 . "\n\n";
+                    echo "customer balance = RM" . $passwordalanceD . "\n\n";
 
                     echo "GENERATING CUSTOMER RECEIPT.....\n";
                     sleep(1);
@@ -581,12 +560,12 @@ function order()
                     echo "\e[0;36;40mRECEIPT GENERATED ";
                     $from = new DateTimeZone('GMT');
                     $to = new DateTimeZone('Asia/Singapore');
-                    $currDate = new DateTime('now', $from);
-                    $currDate->setTimezone($to);
-                    echo "DATE AND TIME :" . $currDate->format('Y/m/j H:i:s' . "\n\n");
+                    $ordernourrDate = new DateTime('now', $from);
+                    $ordernourrDate->setTimezone($to);
+                    echo "DATE AND TIME :" . $ordernourrDate->format('Y/m/j H:i:s' . "\n\n");
                     echo "ORDER DETAILS: \n";
                     echo $menu[3][0] . " \n" . $menu[3][1] . " \n";
-                    echo "quantity :" . $h;
+                    echo "quantity :" . $quantity;
                     echo "\n";
                     if ($z == 'Y' or $z == 'y')
                     {
@@ -597,28 +576,28 @@ function order()
                         echo "TAKE AWAY\n";
                     }
                     echo "\n";
-                    echo "GST 6% (RM) :" . $c41;
+                    echo "GST 6% (RM) :" . $totaltaxD;
                     echo "\n";
 
-                    echo "Total (RM) : " . $c4;
+                    echo "Total (RM) : " . $totalpriceD;
                     echo "\n";
-                    if ($h >= 5)
+                    if ($quantity >= 5)
                     {
-                        echo "Total discount is (10%) : RM" . $dis14 . "\n";
-                        echo "Total amount including GST 6% (RM) and discount : " . $c42;
+                        echo "Total discount is (10%) : RM" . $discountD . "\n";
+                        echo "Total amount including GST 6% (RM) and discount : " . $finalpriceDwithDisc;
                         echo "\n";
                     }
 
                     else
                     {
                         echo "NOT APPLICABLE FOR ANY discount \n";
-                        echo "Total amount including GST 6% (RM): " . $c421;
+                        echo "Total amount including GST 6% (RM): " . $$finalpriceDwithDisc;
                         echo "\n";
                     }
 
                     echo "Cash Tender (RM) :" . $pay;
                     echo "\n";
-                    echo "Change Due (RM) : " . $bal4;
+                    echo "Change Due (RM) : " . $passwordalanceD;
                     echo "\n\n";
                     echo " It was a pleasure serving you \n Thank you & please come again \e[0m\n\n";
                     echo "\e[1;37;42m...................BILAL CAFE RECEIPT .......................\e[0m\n";
