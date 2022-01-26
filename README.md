@@ -1,2 +1,2 @@
 Just another PHP assignment :)
-Run in terminal
+Run on terminal
